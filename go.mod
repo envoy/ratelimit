@@ -2,6 +2,8 @@ module github.com/envoyproxy/ratelimit
 
 go 1.23.9
 
+toolchain go1.26.10
+
 require (
 	github.com/DataDog/datadog-go/v5 v5.5.0
 	github.com/alicebob/miniredis/v2 v2.33.0

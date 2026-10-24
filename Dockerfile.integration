@@ -1,5 +1,7 @@
 # Running this docker image runs the integration tests.
-FROM golang@sha256:2c89c41fb9efc3807029b59af69645867cfe978d2b877d475be0d72f6c6ce6f6
+FROM golang:1.26.10@sha256:672c944cfd07599b5f1bb179869270cdc94c6254e41db4d431259693cb286b82
+# CVE-2026-111943 / CVE-2026-114406: distrust the compromised eMudhra intermediates (emSign ECC Root CA - G3, Comodo AAA Services root)
+RUN apt-get update && apt-get install -y --no-install-recommends --only-upgrade ca-certificates libnss3 && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update -y && apt-get install sudo stunnel4 redis memcached -y && rm -rf /var/lib/apt/lists/*
 
